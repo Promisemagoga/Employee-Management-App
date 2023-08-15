@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("partials/head.ejs") %>
+</head>
+
+<body>
+    <div class="motherContainer">
+        <%- include("partials/navBar.ejs") %>
+            <div class="mainContainer">
+                <div id="popUpAddId" class="addFormContainer">
+                    <span onclick="hidePopUpAdd()">X</span>
+                    <form class="form" action="/home" method="post">
+                        <h2>Add Employee</h2>
+                        <input id="addEmployeeName" type="text" placeholder="Name & Surname" name="employeeName">
+                        <input id="addEmployeeId" type="number" placeholder="ID Number" name="employeeId">
+                        <input id="addEmployeeEmail" type="email" placeholder="Email Adress" name="employeeEmail">
+                        <select name="employeePosition" id="addEmployeePosition">
+                            <option name="employeePosition">Position</option>
+                            <option name="Front-End">Front-End</option>
+                            <option name="Back-End">Back-End</option>
+                            <option name="UI Designer">UI Designer</option>
+                            <option name="Project Manager">Project Manager</option>
+                        </select>
+                        <!-- <input type="text" placeholder="Position" name="employeePosition"> -->
+                        <input id="addEmployeeNumber" type="number" placeholder="Cell Number"
+                            name="employeePhoneNumber">
+                        <input type="file" name="employeeImage">
+                        <button>Add</button>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <br>
+                <button onclick="popUpAdd()">Add Employee</button>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Name & Surname</th>
+                            <th>ID Number</th>
+                            <th>Email Adress</th>
+                            <th>Employee Position</th>
+                            <th>Phone Number</th>
+                            <th>Operations</th>
+
+                        </tr>
+                        <% if(responseArray.length> 0) {%>
+                            <% responseArray.forEach((results)=>{%>
+                                <tr>
+                                    <td><a href="">
+                                            <%= results.employeeName %>
+                                        </a></td>
+                                    <td>
+                                        <%= results.employeeId %>
+
+                                    </td>
+                                    <td>
+                                        <%= results.employeeEmail %>
+                                    </td>
+                                    <td>
+                                        <%= results.employeePosition %>
+                                    </td>
+                                    <td>
+                                        <%= results.employeePhoneNumber %>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                onclick="openPopUp(<%= JSON.stringify(results)%>)">update</i>
+                                            <i class="fa fa-trash-o" aria-hidden="true"
+                                                onclick="deleteFunc(<%= JSON.stringify(results)%>)"
+                                                data-doc=<%=results.id %>>delete</i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                    <%}%>
+
+                    </table>
+
+                </div>
+                <!-- Update form -->
+                <div id="popUp" class="formContainer">
+                    <span onclick="hidePopUp()">X</span>
+                    <br>
+                    <br>
+                    <br>
+                    <div>
+                        <form class="form" id="updateForm">
+                            <h2>Update Employee</h2>
+                            <input type="text" placeholder="Name & Surname" name="employeeName" id="employeeName">
+                            <input type="number" placeholder="ID Number" name="employeeId" id="employeeId">
+                            <input type="email" placeholder="Email Adress" name="employeeEmail" id="employeeEmail">
+                            <select name="employeePosition" id="employeePosition">
+                                <option name="employeePosition" id="employeePosition">Position</option>
+                                <option name="Front-End" id="Front-End">Front-End</option>
+                                <option name="Back-End" id="Back-End">Back-End</option>
+                                <option name="UI Designer" id="UI Designer">UI Designer</option>
+                                <option name="Project Manager" id="Project Manager">Project Manager</option>
+                            </select>
+                            <!-- <input type="text" placeholder="Position" name="employeePosition"> -->
+                            <input type="number" placeholder="Cell Number" name="employeePhoneNumber">
+                            <input type="file" name="employeeImage">
+                            <button id="updateBtn">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <%- include("partials/footer.ejs") %>
+    </div>
+    <script>
+        function deleteFunc(results) {
+            console.log(results);
+            const endPoint = `delete/${results.id}`;
+            fetch(endPoint, {
+                method: 'DELETE',
+            }).then(() => {
+                alert("deleted successfully")
+                window.location.reload()
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
+
+        function openPopUp(result) {
+            document.getElementById("popUp").style.display = 'block'
+            console.log(result);
+        }
+
+        function popUpAdd() {
+            document.getElementById("popUpAddId").style.display = 'block'
+        }
+
+        function hidePopUp() {
+            document.getElementById("popUp").style.display = 'none'
+        }
+
+        function hidePopUpAdd() {
+   
