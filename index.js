@@ -57,17 +57,17 @@ app.delete("/delete/:id", async (req, res) => {
 app.put("/update/:id", async (req, res) => {
     const id = req.params.id;
     const updateData = {
-        // employeeName: req.body.employeeName,
-        // employeeId: req.body.employeeId,
-        // employeeEmail: req.body.employeeEmail,
+        employeeName: req.body.employeeName,
+        employeeId: req.body.employeeId,
+        employeeEmail: req.body.employeeEmail,
         employeePosition: req.body.employeePosition,
-        //employeePhoneNumber: req.body.employeePhoneNumber
+        employeePhoneNumber: req.body.employeePhoneNumber
     }
     db.collection("employees").doc(id).update(updateData).then(() =>{
         console.log("data is successfully updated");
     }).catch((error) =>{
-        console.log(error);
-        res.send(error)
+         console.log(error);
+         res.send(error)
     })
 })
 

@@ -93,14 +93,15 @@
                             <input type="number" placeholder="ID Number" name="employeeId" id="employeeId">
                             <input type="email" placeholder="Email Adress" name="employeeEmail" id="employeeEmail">
                             <select name="employeePosition" id="employeePosition">
-                                <option name="employeePosition" id="employeePosition">Position</option>
-                                <option name="Front-End" id="Front-End">Front-End</option>
-                                <option name="Back-End" id="Back-End">Back-End</option>
-                                <option name="UI Designer" id="UI Designer">UI Designer</option>
-                                <option name="Project Manager" id="Project Manager">Project Manager</option>
+                                <option >Position</option>
+                                <option >Front-End</option>
+                                <option >Back-End</option>
+                                <option >UI Designer</option>
+                                <option  >Project Manager</option>
                             </select>
                             <!-- <input type="text" placeholder="Position" name="employeePosition"> -->
-                            <input type="number" placeholder="Cell Number" name="employeePhoneNumber">
+                            <input type="number" placeholder="Cell Number" name="employeePhoneNumber"
+                                id="employeePhoneNumber">
                             <input type="file" name="employeeImage">
                             <button id="updateBtn">Save Changes</button>
                         </form>
@@ -123,9 +124,42 @@
             })
         }
 
-        function openPopUp(result) {
+        function openPopUp(results) {
+            console.log(results);
             document.getElementById("popUp").style.display = 'block'
-            console.log(result);
+            document.getElementById('employeeName').value = results.employeeName
+            document.getElementById('employeeId').value = results.employeeId
+            document.getElementById('employeeEmail').value = results.employeeEmail
+            document.getElementById('employeePosition').value = results.employeePosition
+            document.getElementById('employeePhoneNumber').value = results.employeePhoneNumber
+
+
+
+            document.getElementById("updateForm").addEventListener('submit', () => {
+                const employeeName = document.getElementById('employeeName').value
+                const employeeId = document.getElementById('employeeId').value
+                const employeeEmail = document.getElementById('employeeEmail').value
+                const employeePosition = document.getElementById('employeePosition').value
+                const employeePhoneNumber = document.getElementById('employeePhoneNumber').value
+               
+                const data = {employeeName,employeeId,employeeEmail,employeePosition,employeePhoneNumber}
+                
+                // console.log(result.id);
+                const endpoint = `update/${results.id}`
+                fetch(endpoint,{
+                    method: "PUT",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                }).then(response => response.json()).then((data) =>{
+                    console.log(data);
+                  alert("Updated data successfully")
+                }).catch((error) =>{
+                    console.log(error);
+                })
+                
+                
+               
+            })
         }
 
         function popUpAdd() {
@@ -137,4 +171,12 @@
         }
 
         function hidePopUpAdd() {
-   
+            document.getElementById("popUpAddId").style.display = 'none'
+        }
+
+
+
+    </script>
+</body>
+
+</html>
