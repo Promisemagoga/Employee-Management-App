@@ -32,7 +32,7 @@ app.post("/home", upload.single('image') ,async (req, res) => {
           action: 'read',
           expires: '03-17-2025'
         });
-// console.log(downloadUrl);
+console.log(downloadUrl);
         const imgJson ={
             imageUrl: downloadUrl[0]
         }
@@ -83,6 +83,7 @@ app.put("/update/:id", async (req, res) => {
          res.send(error)
     })
 })
+
 
 app.get("/profile/:id", async(req,res) =>{
     try {
