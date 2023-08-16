@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("partials/head.ejs") %>
+</head>
+
+<body>
+    <div >
+        <%- include("partials/navBar.ejs") %>
+            <div class="profileContainer">
+                <% if(responseArray.length> 0) {%>
+                    <% responseArray.forEach((results)=>{%>
+                       
+                            <img src=<%=results.employeeImg%> alt="">
+                            <div class="profileContent">
+                            <h1>
+                                <%= results.employeeName %>
+                            </h1>
+
+                            <h2>
+                                <%= results.employeeId %>
+                            </h2>
+                            <h3>
+                                <%= results.employeeEmail %>
+                            </h3>
+                            <h4>
+                                <%= results.employeePosition %>
+                            </h4>
+                            <p>
+                                <%= results.employeePhoneNumber %>
+                            </p>
+
+                        </div>
+                        <%})%>
+                            <%}%>
+            </div>
+            <%- include("partials/footer.ejs") %>
+    </div>
+</body>
+
+</html>

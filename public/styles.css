@@ -15,7 +15,7 @@
     padding: 30px;
 }
 
-.motherContainer{
+.motherContainer {
     min-height: 100vh;
 }
 
@@ -37,6 +37,38 @@ th {
     padding: 8px;
 }
 
+.profile {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.crudBtn {
+    display: flex;
+    column-gap: 5px;
+}
+
+.crudBtn button {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.update {
+    background-color: green;
+}
+
+.delete {
+    background-color: red;
+}
+
 tr:nth-child(even) {
     background-color: #282C35;
     color: #ffffff;
@@ -53,7 +85,7 @@ tr:nth-child(even) a {
     align-items: center;
     row-gap: 30px;
     margin-bottom: 100px;
-   
+
 }
 
 .form input,
@@ -108,31 +140,51 @@ td a {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.addFormContainer span{
+.addFormContainer span {
     color: #dedede;
     font-weight: bold;
     cursor: pointer;
     float: right;
 }
 
-.addFormContainer span:hover, span:focus{
+.addFormContainer span:hover,
+span:focus {
     color: #000000;
 }
 
 .formContainer span {
     float: right;
+    margin-right: 50px;
     color: #ffffff;
     font-weight: bold;
     cursor: pointer;
 }
 
-.addFormContainer{
+.addFormContainer {
     display: none;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+.profileContainer {
+    margin: 100px 0px;
+    align-items: center;
+    text-align: center;
+}
 
+.profileContainer img {
+    width: 300px;
+    height: 300px;
+    background-position: center;
+    border-radius: 100%;
+    margin-bottom: 50px;
+}
+
+.profileContent{
+display: flex;
+flex-direction: column;
+row-gap: 10px;
+}
 
 .formContainer span:hover,
 span:focus {

@@ -11,7 +11,7 @@
             <div class="mainContainer">
                 <div id="popUpAddId" class="addFormContainer">
                     <span onclick="hidePopUpAdd()">X</span>
-                    <form class="form" action="/home" method="post">
+                    <form class="form" action="/home" method="post" enctype="multipart/form-data">
                         <h2>Add Employee</h2>
                         <input id="addEmployeeName" type="text" placeholder="Name & Surname" name="employeeName">
                         <input id="addEmployeeId" type="number" placeholder="ID Number" name="employeeId">
@@ -26,8 +26,8 @@
                         <!-- <input type="text" placeholder="Position" name="employeePosition"> -->
                         <input id="addEmployeeNumber" type="number" placeholder="Cell Number"
                             name="employeePhoneNumber">
-                        <input type="file" name="employeeImage">
-                        <button>Add</button>
+                        <input type="file" name="image">
+                        <button type="submit">Add</button>
                     </form>
                 </div>
                 <br>
@@ -43,14 +43,16 @@
                             <th>Employee Position</th>
                             <th>Phone Number</th>
                             <th>Operations</th>
-
                         </tr>
                         <% if(responseArray.length> 0) {%>
                             <% responseArray.forEach((results)=>{%>
                                 <tr>
-                                    <td><a href="">
+                                    <td class="profile">
+                                        <img src=<%= results.employeeImg%> alt="">
+                                        <a href="/profile/<%= results.id %>">
                                             <%= results.employeeName %>
-                                        </a></td>
+                                        </a>
+                                    </td>
                                     <td>
                                         <%= results.employeeId %>
 
@@ -65,12 +67,12 @@
                                         <%= results.employeePhoneNumber %>
                                     </td>
                                     <td>
-                                        <div>
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"
-                                                onclick="openPopUp(<%= JSON.stringify(results)%>)">update</i>
-                                            <i class="fa fa-trash-o" aria-hidden="true"
+                                        <div class="crudBtn">
+                                            <button class="update"
+                                                onclick="openPopUp(<%= JSON.stringify(results)%>)">update</button>
+                                            <button class="delete"
                                                 onclick="deleteFunc(<%= JSON.stringify(results)%>)"
-                                                data-doc=<%=results.id %>>delete</i>
+                                                data-doc=<%=results.id %>>delete</button>
                                         </div>
                                     </td>
                                 </tr>
