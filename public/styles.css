@@ -21,6 +21,7 @@
 
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 4vw;
 }
 
 table {
@@ -189,4 +190,32 @@ row-gap: 10px;
 .formContainer span:hover,
 span:focus {
     color: #000000;
+}
+
+@media screen and (max-width:767px) {
+    table {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .form input,
+select {
+    width: 250px;
+    height: 30px;
+}
+
+.form button {
+    width: 150px;
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 5vw;
+}
+
+.profileContainer img {
+    width: 200px;
+    height: 200px;
+}
 }
