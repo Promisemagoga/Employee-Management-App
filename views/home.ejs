@@ -69,9 +69,9 @@
                                     <td>
                                         <div class="crudBtn">
                                             <button class="update"
-                                                onclick="openPopUp(<%= JSON.stringify(results)%>)">update</button>
+                                                onclick="openPopUp(`<%= JSON.stringify(results)%>`)">update</button>
                                             <button class="delete"
-                                                onclick="deleteFunc(<%= JSON.stringify(results)%>)"
+                                                onclick="deleteFunc(`<%= JSON.stringify(results)%>`)"
                                                 data-doc=<%=results.id %>>delete</button>
                                         </div>
                                     </td>
@@ -114,8 +114,9 @@
     </div>
     <script>
         function deleteFunc(results) {
+            const parse = JSON.parse(results)
             console.log(results);
-            const endPoint = `delete/${results.id}`;
+            const endPoint = `delete/${parse.id}`;
             fetch(endPoint, {
                 method: 'DELETE',
             }).then(() => {
@@ -127,13 +128,14 @@
         }
 
         function openPopUp(results) {
+            const parse = JSON.parse(results)
             console.log(results);
             document.getElementById("popUp").style.display = 'block'
-            document.getElementById('employeeName').value = results.employeeName
-            document.getElementById('employeeId').value = results.employeeId
-            document.getElementById('employeeEmail').value = results.employeeEmail
-            document.getElementById('employeePosition').value = results.employeePosition
-            document.getElementById('employeePhoneNumber').value = results.employeePhoneNumber
+            document.getElementById('employeeName').value = parse.employeeName
+            document.getElementById('employeeId').value = parse.employeeId
+            document.getElementById('employeeEmail').value = parse.employeeEmail
+            document.getElementById('employeePosition').value = parse.employeePosition
+            document.getElementById('employeePhoneNumber').value = parse.employeePhoneNumber
 
 
 
@@ -147,7 +149,7 @@
                 const data = {employeeName,employeeId,employeeEmail,employeePosition,employeePhoneNumber}
                 
                 // console.log(result.id);
-                const endpoint = `update/${results.id}`
+                const endpoint = `update/${parse.id}`
                 fetch(endpoint,{
                     method: "PUT",
                     headers: {'Content-Type': 'application/json'},
