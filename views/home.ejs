@@ -10,8 +10,8 @@
         <%- include("partials/navBar.ejs") %>
             <div class="mainContainer">
                 <div id="popUpAddId" class="addFormContainer">
-                    <span onclick="hidePopUpAdd()">X</span>
                     <form class="form" action="/" method="post" enctype="multipart/form-data">
+                        <h1 onclick="hidePopUpAdd()">X</h1>
                         <h2>Add Employee</h2>
                         <input id="addEmployeeName" type="text" placeholder="Name & Surname" name="employeeName">
                         <input id="addEmployeeId" type="number" placeholder="ID Number" name="employeeId">
@@ -48,7 +48,7 @@
                             <% responseArray.forEach((results)=>{%>
                                 <tr>
                                     <td class="profile">
-                                        <img src=<%= results.employeeImg%> alt="">
+                                        <img src=<%=results.employeeImg%> alt="">
                                         <a href="/profile/<%= results.id %>">
                                             <%= results.employeeName %>
                                         </a>
@@ -70,8 +70,7 @@
                                         <div class="crudBtn">
                                             <button class="update"
                                                 onclick="openPopUp(`<%= JSON.stringify(results)%>`)">update</button>
-                                            <button class="delete"
-                                                onclick="deleteFunc(`<%= JSON.stringify(results)%>`)"
+                                            <button class="delete" onclick="deleteFunc(`<%= JSON.stringify(results)%>`)"
                                                 data-doc=<%=results.id %>>delete</button>
                                         </div>
                                     </td>
@@ -84,22 +83,22 @@
                 </div>
                 <!-- Update form -->
                 <div id="popUp" class="formContainer">
-                    <span onclick="hidePopUp()">X</span>
                     <br>
                     <br>
                     <br>
                     <div>
                         <form class="form" id="updateForm">
+                            <h1 onclick="hidePopUp()">X</h1>
                             <h2>Update Employee</h2>
                             <input type="text" placeholder="Name & Surname" name="employeeName" id="employeeName">
                             <input type="number" placeholder="ID Number" name="employeeId" id="employeeId">
                             <input type="email" placeholder="Email Adress" name="employeeEmail" id="employeeEmail">
                             <select name="employeePosition" id="employeePosition">
-                                <option >Position</option>
-                                <option >Front-End</option>
-                                <option >Back-End</option>
-                                <option >UI Designer</option>
-                                <option  >Project Manager</option>
+                                <option>Position</option>
+                                <option>Front-End</option>
+                                <option>Back-End</option>
+                                <option>UI Designer</option>
+                                <option>Project Manager</option>
                             </select>
                             <!-- <input type="text" placeholder="Position" name="employeePosition"> -->
                             <input type="number" placeholder="Cell Number" name="employeePhoneNumber"
@@ -145,24 +144,24 @@
                 const employeeEmail = document.getElementById('employeeEmail').value
                 const employeePosition = document.getElementById('employeePosition').value
                 const employeePhoneNumber = document.getElementById('employeePhoneNumber').value
-               
-                const data = {employeeName,employeeId,employeeEmail,employeePosition,employeePhoneNumber}
-                
+
+                const data = { employeeName, employeeId, employeeEmail, employeePosition, employeePhoneNumber }
+
                 // console.log(result.id);
                 const endpoint = `update/${parse.id}`
-                fetch(endpoint,{
+                fetch(endpoint, {
                     method: "PUT",
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
-                }).then(response => response.json()).then((data) =>{
+                }).then(response => response.json()).then((data) => {
                     console.log(data);
-                  alert("Updated data successfully")
-                }).catch((error) =>{
+                    alert("Updated data successfully")
+                }).catch((error) => {
                     console.log(error);
                 })
-                
-                
-               
+
+
+
             })
         }
 

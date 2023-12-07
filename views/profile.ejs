@@ -6,32 +6,50 @@
 </head>
 
 <body>
-    <div >
+    <div>
         <%- include("partials/navBar.ejs") %>
             <div class="profileContainer">
                 <% if(responseArray.length> 0) {%>
                     <% responseArray.forEach((results)=>{%>
-                       
+                        <div class="contentContaioner">
                             <img src=<%=results.employeeImg%> alt="">
                             <div class="profileContent">
-                            <h2>
-                                <%= results.employeeName %>
-                            </h2>
+                                <h2>
+                                    Name & Surname: <span style="font-weight: lighter;font-size: 18px;">
+                                        <%= results.employeeName %>
+                                    </span>
+                                </h2>
 
-                            <h3>
-                                <%= results.employeeId %>
-                            </h3>
-                            <h4>
-                                <%= results.employeeEmail %>
-                            </h4>
-                            <h5>
-                                <%= results.employeePosition %>
-                            </h5>
-                            <p>
-                                <%= results.employeePhoneNumber %>
-                            </p>
+                                <h2>
+                                    ID Number:
+                                    <span style="font-weight: lighter;font-size: 18px;">
+                                        <%= results.employeeId %>
 
+                                    </span>
+                                </h2>
+                                <h2>
+                                    Email:
+                                    <span style="font-weight: lighter;font-size: 18px;">
+                                        <%= results.employeeEmail %>
+
+                                    </span>
+                                </h2>
+                                <h2>
+                                    Position:
+                                    <span style="font-weight: lighter;font-size: 18px;">
+                                        <%= results.employeePosition %>
+                                    </span>
+                                </h2>
+                                <h2>
+                                    Contact Number:
+                                    <span style="font-weight: lighter;font-size: 18px;">
+                                        <%= results.employeePhoneNumber %>
+                                    </span>
+                                </h2>
+
+                            </div>
                         </div>
+
                         <%})%>
                             <%}%>
             </div>

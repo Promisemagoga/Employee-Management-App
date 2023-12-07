@@ -11,7 +11,8 @@
 }
 
 .mainContainer {
-    margin-top: 100px;
+    min-height: 100vh;
+    margin-top: auto;
     padding: 30px;
 }
 
@@ -21,7 +22,7 @@
 
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 4vw;
+    font-size: vw;
 }
 
 table {
@@ -80,13 +81,24 @@ tr:nth-child(even) a {
 }
 
 .form {
-    padding: 50px 0px;
+    background-color: #ffffff;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 30px;
     margin-bottom: 100px;
 
+
+}
+
+.form h1 {
+    margin-left: auto;
+    padding: 20px;
+    color: #000000;
 }
 
 .form input,
@@ -134,7 +146,8 @@ td a {
     display: none;
     position: fixed;
     overflow: auto;
-    z-index: 1;
+    position: absolute;
+    z-index: 20;
     left: 0;
     top: 0;
     padding: 10px;
@@ -164,27 +177,56 @@ span:focus {
 .addFormContainer {
     display: none;
     padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .profileContainer {
+    min-height: 100vh;
     margin: 100px 0px;
+    display: flex;
     align-items: center;
     text-align: center;
+
+}
+
+.contentContaioner {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 50%;
+    height: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    gap: 30px;
+    align-items: center;
+    padding: 10px;
+
 }
 
 .profileContainer img {
     width: 300px;
-    height: 300px;
+    height: 200px;
     background-position: center;
-    border-radius: 100%;
-    margin-bottom: 50px;
+    /* border-radius: 100%; */
+
 }
 
-.profileContent{
-display: flex;
-flex-direction: column;
-row-gap: 10px;
+.profileContent {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.profileContent h2 {
+    font-size: 20px;
+    text-align: left;
 }
 
 .formContainer span:hover,
@@ -192,7 +234,7 @@ span:focus {
     color: #000000;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:768px) {
     table {
         display: flex;
         flex-wrap: nowrap;
@@ -200,22 +242,43 @@ span:focus {
     }
 
     .form input,
-select {
-    width: 250px;
-    height: 30px;
-}
+    select {
+        width: 250px;
+        height: 30px;
+    }
 
-.form button {
-    width: 150px;
-}
+    .form button {
+        width: 150px;
+    }
 
-h1 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 5vw;
-}
+    h1 {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 5vw;
+    }
 
-.profileContainer img {
-    width: 200px;
-    height: 200px;
-}
+    .profileContainer img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .contentContaioner {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        width: 70%;
+        height: 50vh;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        padding: 10px;
+
+    }
+
+    .profileContainer img {
+        width: 300px;
+        height: 200px;
+        background-position: center;
+
+    }
 }
